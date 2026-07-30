@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Employee Directory</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- Top Navbar -->
+  <header class="navbar">
+    <div class="navbar-inner">
+      <div class="navbar-title">
+        <div class="logo-circle">👥</div>
+        <div>
+          <h1>Employee Directory</h1>
+          <div class="navbar-subtitle">
+            Minimal HR dashboard for your AWS migration project
+          </div>
+        </div>
+      </div>
+      <div class="navbar-subtitle">
+        Built with Node + MySQL · Demo app
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="layout">
+      <!-- LEFT: Add Employee Card -->
+      <section class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <div class="icon-circle">➕</div>
+            <div>
+              <h2>Add Employee</h2>
+              <p>Quickly add new team members with basic details.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- JS will POST to /api/employees -->
+        <form id="employee-form" method="POST">
+          <div class="form-grid">
+            <div>
+              <label for="full_name">Full Name</label>
+              <input
+                type="text"
+                id="full_name"
+                name="full_name"
+                placeholder="e.g. Cloud Engineer"
+                required
+              />
+            </div>
+
+            <div>
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="e.g. heddy@example.com"
+                required
+              />
+            </div>
+
+            <div>
+              <label for="role">Role</label>
+              <input
+                type="text"
+                id="role"
+                name="role"
+                placeholder="e.g. Cloud Engineer"
+              />
+            </div>
+
+            <div>
+              <label for="department">Department</label>
+              <input
+                type="text"
+                id="department"
+                name="department"
+                placeholder="e.g. Engineering"
+              />
+            </div>
+
+            <div>
+              <label for="location">Location</label>
+              <input
+                type="text"
+                id="location"
+                name="location"
+                placeholder="e.g. Remote / Bangalore"
+              />
+            </div>
+
+            <div>
+              <label for="join_date">Join Date</label>
+              <input
+                type="date"
+                id="join_date"
+                name="join_date"
+              />
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit">
+              <span>➕</span> Add Employee
+            </button>
+          </div>
+
+          <!-- Form feedback -->
+          <div id="form-message" class="form-message"></div>
+        </form>
+      </section>
+
+      <!-- RIGHT SIDE: Stats + Employees Table -->
+      <section class="right-column">
+        <!-- Stats Card -->
+        <div class="card" style="margin-bottom: 18px;">
+          <div class="card-header">
+            <div class="card-title">
+              <div class="icon-circle">📊</div>
+              <div>
+                <h2>Team Overview</h2>
+                <p>High-level snapshot of your org.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="stats">
+            <div class="stat-box">
+              <div class="stat-label">Total Employees</div>
+              <div class="stat-value" id="stat-total">0</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Departments</div>
+              <div class="stat-value" id="stat-departments">0</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Locations</div>
+              <div class="stat-value" id="stat-locations">0</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Employees Table Card -->
+        <div class="card">
+          <div class="table-header">
+            <div class="table-title">
+              <span>👩‍💻</span> Employees
+            </div>
+            <input
+              type="text"
+              id="search"
+              placeholder="Search by name, role"
+            />
+          </div>
+
+          <p id="employees-empty" class="employees-empty">
+            Loading employees...
+          </p>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Employee</th>
+                <th>Role</th>
+                <th>Department</th>
+                <th>Location</th>
+                <th>Join Date</th>
+              </tr>
+            </thead>
+            <tbody id="employees-body">
+              <!-- Filled via JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Front-end logic -->
+  <script src="app.js"></script>
+</body>
+</html>

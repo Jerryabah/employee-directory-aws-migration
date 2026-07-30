@@ -1,0 +1,13 @@
+-- /sql/init.sql
+
+CREATE TABLE IF NOT EXISTS employees (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  full_name VARCHAR(100) NOT NULL,
+  email VARCHAR(150) NOT NULL,
+  role VARCHAR(100) NOT NULL,
+  department VARCHAR(100) NOT NULL,
+  location VARCHAR(100) NOT NULL,
+  join_date DATE NOT NULL,
+  photo_url VARCHAR(255) DEFAULT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
