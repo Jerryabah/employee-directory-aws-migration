@@ -17,6 +17,6 @@
     "cors": "^2.8.5"
   },
   "devDependencies": {
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.14"
   }
 }
